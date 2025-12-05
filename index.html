@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayrollPro - Enterprise Payroll Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-white dark:bg-slate-950 antialiased overflow-x-hidden transition-colors duration-300">
+    <header
+      class="fixed w-full top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
+      id="header"
+    >
+      <nav class="container mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-sm">P</span>
+            </div>
+            <span class="text-xl font-bold text-slate-900 dark:text-white">PayrollPro</span>
+          </div>
+
+          <ul class="hidden lg:flex items-center space-x-8">
+            <li><a href="#why-choose" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Why Us</a></li>
+            <li><a href="#features" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Features</a></li>
+            <li><a href="#team" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">About</a></li>
+            <li><a href="calculations.html" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Calculations</a></li>
+          </ul>
+
+          <div class="hidden lg:flex items-center space-x-4">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Toggle dark mode">
+              <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+              <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+            <button onclick="showDemo()" class="px-5 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm">Demo</button>
+          </div>
+
+          <div class="lg:hidden flex items-center space-x-2">
+            <button id="dark-mode-toggle-mobile" onclick="toggleDarkMode()" class="p-2 text-slate-600 dark:text-slate-400" aria-label="Toggle dark mode">
+              <svg id="sun-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+              <svg id="moon-icon-mobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+            <button type="button" class="text-slate-600 dark:text-slate-400" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden pb-6 space-y-4">
+          <a href="#why-choose" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Why Us</a>
+          <a href="#features" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Features</a>
+          <a href="#team" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">About</a>
+          <a href="calculations.html" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Calculations</a>
+          <div class="pt-4 flex gap-3">
+            <button onclick="showDemo()" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">Demo</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="pt-28 pb-20 px-6 lg:px-8 bg-white dark:bg-slate-950">
+      <div class="container mx-auto max-w-7xl">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-800">
+              <span>Trusted by 10,000+ organizations</span>
+            </div>
+
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
+              Enterprise Payroll
+              <span class="text-blue-600 dark:text-blue-400">Management</span>
+              Made Simple
+            </h1>
+
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              Streamline HR operations, ensure compliance, and empower your workforce with our comprehensive payroll management platform trusted by leading enterprises.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button onclick="showDemo()" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm">
+                Request Demo
+              </button>
+              <button onclick="scrollToSection('team')" class="px-8 py-3 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                Learn More
+              </button>
+            </div>
+
+            <div class="flex items-center gap-6 pt-4">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm text-slate-600 dark:text-slate-400">Academic Project</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm text-slate-600 dark:text-slate-400">SETEC Institute</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative max-w-sm mx-auto lg:max-w-none">
+            <!-- Mobile Device Frame -->
+            <div class="relative">
+              <!-- Phone Bezel -->
+              <div class="relative bg-slate-900 dark:bg-slate-950 rounded-[2.5rem] lg:rounded-[3rem] p-3 lg:p-4 shadow-2xl border-4 border-slate-800 dark:border-slate-700">
+                <!-- Notch -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-900 dark:bg-slate-950 rounded-b-3xl z-10"></div>
+
+                <!-- Screen -->
+                <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden">
+                  <!-- Status Bar -->
+                  <div class="flex items-center justify-between px-6 pt-8 pb-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl">
+                    <div class="text-xs font-semibold text-slate-900 dark:text-white">9:41</div>
+                    <div class="flex items-center gap-1">
+                      <svg class="w-4 h-4 text-slate-900 dark:text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                      </svg>
+                      <svg class="w-3 h-3 text-slate-900 dark:text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                      </svg>
+                      <svg class="w-5 h-3 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 12">
+                        <rect x="1" y="1" width="18" height="10" rx="2" stroke-width="1.5"/>
+                        <path d="M20 4v4" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- App Content -->
+                  <div class="px-5 py-4 space-y-3 max-h-[600px] overflow-y-auto">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between sticky top-0 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 pb-3 z-10">
+                      <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">HR Analytics</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Dashboard Overview</p>
+                      </div>
+                      <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
+                        <span class="flex h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                        <span class="text-xs font-medium text-green-700 dark:text-green-400">Live</span>
+                      </div>
+                    </div>
+
+                    <!-- Stats Cards with Circular Progress -->
+                    <div class="grid grid-cols-2 gap-3">
+                      <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-3 shadow-lg">
+                        <div class="flex items-center justify-between mb-2">
+                          <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                            </svg>
+                          </div>
+                          <div class="relative w-10 h-10">
+                            <svg class="transform -rotate-90 w-10 h-10">
+                              <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none"/>
+                              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3" fill="none" stroke-dasharray="113" stroke-dashoffset="28" stroke-linecap="round"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                              <span class="text-xs font-bold text-white">75%</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-xl font-bold text-white mb-0.5">2,847</div>
+                        <div class="text-xs text-blue-100">Employees</div>
+                        <div class="flex items-center gap-2 mt-2">
+                          <div class="flex items-center gap-1">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                            <span class="text-xs text-blue-100">Active</span>
+                          </div>
+                          <div class="flex items-center gap-1">
+                            <div class="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
+                            <span class="text-xs text-blue-200">Leave</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-3 shadow-lg">
+                        <div class="flex items-center justify-between mb-2">
+                          <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <div class="relative w-10 h-10">
+                            <svg class="transform -rotate-90 w-10 h-10">
+                              <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none"/>
+                              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3" fill="none" stroke-dasharray="113" stroke-dashoffset="11" stroke-linecap="round"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                              <span class="text-xs font-bold text-white">90%</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-xl font-bold text-white mb-0.5">$1.24M</div>
+                        <div class="text-xs text-green-100">Monthly Payroll</div>
+                        <div class="text-xs text-green-200 mt-1">Processed on schedule</div>
+                      </div>
+                    </div>
+
+                    <!-- Payroll Breakdown -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-sm">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Payroll Breakdown</span>
+                        <span class="text-xs text-blue-600 dark:text-blue-400">This Month</span>
+                      </div>
+                      <div class="space-y-2">
+                        <div>
+                          <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center gap-1.5">
+                              <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                              <span class="text-xs text-slate-700 dark:text-slate-300">Base Salary</span>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-900 dark:text-white">$847.5K</span>
+                          </div>
+                          <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1">
+                            <div class="bg-blue-600 h-1 rounded-full" style="width: 68%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center gap-1.5">
+                              <div class="w-1.5 h-1.5 bg-green-600 rounded-full"></div>
+                              <span class="text-xs text-slate-700 dark:text-slate-300">Benefits</span>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-900 dark:text-white">$248K</span>
+                          </div>
+                          <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1">
+                            <div class="bg-green-600 h-1 rounded-full" style="width: 20%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center gap-1.5">
+                              <div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div>
+                              <span class="text-xs text-slate-700 dark:text-slate-300">Bonuses</span>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-900 dark:text-white">$124K</span>
+                          </div>
+                          <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1">
+                            <div class="bg-purple-600 h-1 rounded-full" style="width: 10%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center gap-1.5">
+                              <div class="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                              <span class="text-xs text-slate-700 dark:text-slate-300">Overtime</span>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-900 dark:text-white">$24.8K</span>
+                          </div>
+                          <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1">
+                            <div class="bg-orange-600 h-1 rounded-full" style="width: 2%"></div>
+                          </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                          <span class="text-xs font-bold text-slate-900 dark:text-white">Total</span>
+                          <span class="text-sm font-bold text-purple-600 dark:text-purple-400">$1,244,300</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Department Distribution -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-sm">
+                      <div class="text-xs font-semibold text-slate-900 dark:text-white mb-2">Department Distribution</div>
+                      <div class="grid grid-cols-4 gap-2">
+                        <div class="text-center p-2 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                          <div class="w-8 h-8 mx-auto mb-1 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+                            </svg>
+                          </div>
+                          <p class="text-sm font-bold text-blue-900 dark:text-blue-100">847</p>
+                          <p class="text-xs text-blue-700 dark:text-blue-300">Tech</p>
+                        </div>
+                        <div class="text-center p-2 bg-green-50 dark:bg-green-900/20 rounded-xl">
+                          <div class="w-8 h-8 mx-auto mb-1 bg-green-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                          </div>
+                          <p class="text-sm font-bold text-green-900 dark:text-green-100">624</p>
+                          <p class="text-xs text-green-700 dark:text-green-300">Sales</p>
+                        </div>
+                        <div class="text-center p-2 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                          <div class="w-8 h-8 mx-auto mb-1 bg-purple-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <p class="text-sm font-bold text-purple-900 dark:text-purple-100">521</p>
+                          <p class="text-xs text-purple-700 dark:text-purple-300">Ops</p>
+                        </div>
+                        <div class="text-center p-2 bg-orange-50 dark:bg-orange-900/20 rounded-xl">
+                          <div class="w-8 h-8 mx-auto mb-1 bg-orange-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <p class="text-sm font-bold text-orange-900 dark:text-orange-100">855</p>
+                          <p class="text-xs text-orange-700 dark:text-orange-300">Other</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-sm">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="text-sm font-semibold text-slate-900 dark:text-white">Payroll Processed</div>
+                          <div class="text-xs text-slate-500 dark:text-slate-400">2,847 employees • $1.24M</div>
+                        </div>
+                        <span class="text-xs text-slate-400 dark:text-slate-500">2m</span>
+                      </div>
+                    </div>
+
+                    <!-- Tax Filing Complete -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-sm">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="text-sm font-semibold text-slate-900 dark:text-white">Tax Filing Complete</div>
+                          <div class="text-xs text-slate-500 dark:text-slate-400">Federal & State compliance</div>
+                        </div>
+                        <span class="text-xs text-slate-400 dark:text-slate-500">1h</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Bottom spacing for home indicator -->
+                  <div class="h-6"></div>
+                </div>
+
+                <!-- Home Indicator -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="py-16 px-6 lg:px-8 bg-white dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800">
+      <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">99.9%</div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium">Uptime Guarantee</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">10K+</div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium">Active Companies</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">2M+</div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium">Employees Managed</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">24/7</div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium">Expert Support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-choose" class="py-24 px-6 lg:px-8 bg-slate-50 dark:bg-slate-900">
+      <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">Why Choose PayrollPro</h2>
+          <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Built for scale, designed for simplicity, and trusted by industry leaders</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Enterprise-Grade Security</h3>
+            <p class="text-slate-600 dark:text-slate-400">Bank-level encryption and SOC 2 Type II certified protection for your sensitive payroll data.</p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Lightning-Fast Processing</h3>
+            <p class="text-slate-600 dark:text-slate-400">Process payroll for thousands of employees in minutes with 99.9% uptime guarantee.</p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Compliance Automation</h3>
+            <p class="text-slate-600 dark:text-slate-400">Automatic tax calculations and regulatory updates ensure you stay compliant effortlessly.</p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Advanced Analytics</h3>
+            <p class="text-slate-600 dark:text-slate-400">AI-powered insights into workforce costs and compensation trends for data-driven decisions.</p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Global Scalability</h3>
+            <p class="text-slate-600 dark:text-slate-400">Multi-currency support and international compliance for 50+ countries.</p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Seamless Integration</h3>
+            <p class="text-slate-600 dark:text-slate-400">Connect with 500+ business tools including QuickBooks and SAP with RESTful APIs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-24 px-6 lg:px-8 bg-white dark:bg-slate-950">
+      <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">Comprehensive Feature Suite</h2>
+          <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Everything you need to manage payroll, compliance, and employee benefits in one integrated platform</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 mb-20">
+          <!-- Feature 1: Payroll Processing -->
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Automated Payroll Processing</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">Eliminate manual calculations and errors with intelligent automation that handles complex salary structures, bonuses, deductions, and tax withholdings seamlessly.</p>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Multi-currency and multi-country payroll processing</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Automatic tax calculations and regulatory updates</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Direct deposit and flexible payment scheduling</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Advanced deduction and allowance management</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2: Analytics -->
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Real-Time Analytics & Reporting</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">Make informed decisions with comprehensive dashboards, customizable reports, and predictive analytics powered by advanced data analysis.</p>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Labor cost analysis and detailed forecasting</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Comprehensive compliance and audit trail reports</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Custom report builder with flexible exports</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Department and budget-wise cost breakdown</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3: Employee Self-Service -->
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Employee Self-Service Portal</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">Empower employees with 24/7 access to their payroll information, documents, and benefits through an intuitive mobile-friendly interface.</p>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Digital payslips and tax document access</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Leave request and approval workflows</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Personal information and profile management</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Benefit selections and enrollment tracking</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 4: Time & Attendance -->
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Time & Attendance Tracking</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">Accurately track employee hours with mobile integration and automated overtime calculations that sync directly with payroll processing.</p>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Mobile clock-in with GPS location tracking</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Shift scheduling and management tools</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Automated overtime and holiday calculations</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-slate-700 dark:text-slate-300">Leave balance tracking and approvals</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Benefits Section -->
+        <div class="bg-blue-50 dark:bg-blue-900/10 rounded-2xl p-12 border border-blue-200 dark:border-blue-800">
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-8">Additional Capabilities</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">Compliance Management</div>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Automatic regulatory updates, audit trails, and tax compliance across jurisdictions</p>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">Benefits Administration</div>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Enrollment management, plan administration, and benefit calculations integrated</p>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">Data Security</div>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Military-grade encryption, SOC 2 certification, and GDPR compliance</p>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">API Integration</div>
+              <p class="text-sm text-slate-600 dark:text-slate-400">RESTful APIs for seamless integration with existing business systems</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Payslip Visualization Section -->
+    <section class="py-24 px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50 dark:from-slate-950 dark:to-slate-900">
+      <div class="container mx-auto max-w-7xl">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white">
+              Digital Payslip
+              <span class="text-blue-600 dark:text-blue-400">Management</span>
+            </h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              Experience our advanced document management system with interactive 3D visualization. Generate, organize, and distribute digital payslips seamlessly.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-slate-900 dark:text-white">Automated Generation</h4>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm">Create professional payslips automatically with customizable templates</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-slate-900 dark:text-white">Secure Distribution</h4>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm">Encrypted delivery directly to employee portals and email</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-slate-900 dark:text-white">Complete Archive</h4>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm">Historical records with instant search and retrieval capabilities</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <!-- 3D Payslip Visualization Container -->
+            <div id="payslip-3d-viz" class="w-full h-[500px] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 shadow-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="team"
+      class="py-24 px-6 lg:px-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900"
+    >
+      <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-16">
+          <div
+            class="inline-flex items-center px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium mb-4 animate-fade-in-up"
+          >
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+              ></path>
+            </svg>
+            Academic Project - SETEC Institute
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            About This Project
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Developed by second-year Management Information System students as
+            part of our curriculum to demonstrate enterprise software design and
+            development capabilities
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
+          <div
+            class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-blue-200 dark:border-blue-700 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 reveal"
+          >
+            <div
+              class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Academic Level</h3>
+            <p class="text-gray-600 dark:text-gray-300">Year 2 Students</p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-green-200 dark:border-green-700 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 reveal"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Institution</h3>
+            <p class="text-gray-600 dark:text-gray-300">SETEC Institute</p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-purple-200 dark:border-purple-700 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 reveal"
+          >
+            <div
+              class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Major</h3>
+            <p class="text-gray-600 dark:text-gray-300">Management Information System</p>
+          </div>
+        </div>
+
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            Project Development Team
+          </h3>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Our diverse team brought together unique skills and perspectives to
+            create this comprehensive payroll solution
+          </p>
+          <div
+            class="grid md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto mb-12"
+          >
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-blue-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Dara San</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Frontend Lead</p>
+              <span
+                class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-green-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Chanratana</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Database Designer</p>
+              <span
+                class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-purple-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Minea</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">UI/UX Designer</p>
+              <span
+                class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-orange-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">TEPI</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Backend Developer</p>
+              <span
+                class="inline-block px-3 py-1 bg-orange-100 text-orange-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-pink-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Chandara</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Project Manager</p>
+              <span
+                class="inline-block px-3 py-1 bg-pink-100 text-pink-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+
+            <div class="text-center reveal group cursor-pointer">
+              <div class="relative mb-4">
+                <div
+                  class="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110"
+                >
+                  <svg
+                    class="w-16 h-16 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="absolute inset-0 bg-blue-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                ></div>
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Han Rathanak Visal</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Team Strategy Plan for Design System</p>
+              <span
+                class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full"
+                >MIS Student</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-16 max-w-6xl mx-auto">
+          <h3 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            Core Project Modules & Functional Expertise
+          </h3>
+          <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+            Each module was led by specialists, ensuring robust system design,
+            accurate payroll logic, and a superior user experience.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="reveal bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:border-blue-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div
+                class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-7 h-7"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Core Logic & Compliance Engine
+              </h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Responsible for the precise calculation engine for salaries,
+                taxes, and deductions. Focused on implementing secure,
+                compliant, and scalable server-side logic and database
+                architecture.
+              </p>
+              <div class="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-4">
+                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Expertise Provided By:
+                </p>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Tepi (Backend Development)
+                </div>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Minea (Payroll System Design)
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:border-blue-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              style="animation-delay: 0.1s"
+            >
+              <div
+                class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-7 h-7"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Data Visualization & UX/UI Design
+              </h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Dedicated to creating an intuitive user interface and
+                experience. Focused on data visualization, frontend component
+                logic, and responsive design for all devices.
+              </p>
+              <div class="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-4">
+                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Expertise Provided By:
+                </p>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Darasan (Frontend & UI Implementation)
+                </div>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Chanratana (Visual Design & Prototyping)
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:border-green-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              style="animation-delay: 0.2s"
+            >
+              <div
+                class="w-14 h-14 bg-green-50 dark:bg-green-900/30 text-green-600 rounded-lg flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-7 h-7"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Development Strategy & Integration
+              </h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Oversaw project delivery, ensuring seamless integration between
+                the front-end interface and the core payroll logic. Managed
+                project timelines and adhered to Agile Scrum practices.
+              </p>
+              <div class="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-4">
+                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Expertise Provided By:
+                </p>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  Chandara (Development Lead)
+                </div>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  Agile Methodology & Project Scoping
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:border-blue-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              style="animation-delay: 0.3s"
+            >
+              <div
+                class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-7 h-7"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Design System Strategy & Planning
+              </h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Developed comprehensive design system strategies ensuring visual
+                consistency and scalability across all platform components.
+                Focused on creating reusable patterns, accessibility standards,
+                and future-proof design architecture for enterprise applications.
+              </p>
+              <div class="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-4">
+                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Expertise Provided By:
+                </p>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Han Rathanak Visal (Design System Strategy)
+                </div>
+                <div class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                  <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  Component Architecture & Pattern Library
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-700 shadow-lg reveal"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            Project Overview
+          </h3>
+          <div class="space-y-4 text-gray-700 dark:text-gray-300">
+            <p class="leading-relaxed">
+              <strong class="text-gray-900 dark:text-white">PayrollPro</strong> is a
+              comprehensive enterprise HR and payroll management system designed
+              and developed as an academic project by our team of five
+              Management Information System students at SETEC Institute.
+            </p>
+            <p class="leading-relaxed">
+              This project demonstrates our understanding of modern web
+              technologies, database management, user interface design, and
+              enterprise software architecture. The system incorporates
+              real-world HR functionalities including payroll processing,
+              employee management, benefits administration, and compliance
+              tracking.
+            </p>
+            <div
+              class="grid md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-blue-300 dark:border-blue-600"
+            >
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  Key Features
+                </h4>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Automated payroll processing
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Real-time analytics dashboard
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Employee self-service portal
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Compliance management
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    ></path>
+                  </svg>
+                  Technologies Used
+                </h4>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    HTML5, CSS3, JavaScript
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Tailwind CSS Framework
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Responsive Design Principles
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                    Modern UI/UX Patterns
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="py-24 px-6 lg:px-12 bg-white dark:bg-gray-900">
+      <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Comprehensive Support & Resources
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            We're committed to your success with world-class support and
+            resources
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Knowledge Base</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Comprehensive documentation, tutorials, and best practices to
+              maximize platform value.
+            </p>
+          </div>
+
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              24/7 Expert Support
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Round-the-clock assistance via chat, email, and phone from
+              certified HR and payroll specialists.
+            </p>
+          </div>
+
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Onboarding & Training
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Personalized onboarding, live webinars, and certification programs
+              for your HR team.
+            </p>
+          </div>
+
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Data Migration</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Free white-glove migration services to seamlessly transfer data
+              from legacy systems.
+            </p>
+          </div>
+
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Continuous Updates
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Regular feature releases, security patches, and compliance updates
+              at no additional cost.
+            </p>
+          </div>
+
+          <div
+            class="reveal bg-gradient-to-br from-blue-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-xl border border-blue-100 dark:border-gray-700"
+          >
+            <div
+              class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Community Forum
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Connect with 10,000+ HR professionals to share insights and best
+              practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="py-24 px-6 lg:px-12 enterprise-gradient text-white"
+    >
+      <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          Interested in Learning More?
+        </h2>
+        <p class="text-xl mb-10 opacity-90">
+          Explore our academic project and see how we've applied Management
+          Information System principles to create a modern HR solution
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <button
+            onclick="showDemo()"
+            class="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
+          >
+            Request Demo
+          </button>
+          <button
+            onclick="scrollToSection('team')"
+            class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
+          >
+            Meet the Team
+          </button>
+        </div>
+        <p class="text-sm opacity-75">
+          Academic Project • SETEC Institute • Management Information System
+        </p>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 py-16 px-6 lg:px-12">
+              <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          <div class="lg:col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <img
+                src="Images/logo.png"
+                alt="SETEC Institute"
+                class="h-16 w-auto"
+              />
+              <div class="border-l-2 border-gray-700 pl-3">
+                <span class="text-2xl font-bold text-white">PayrollPro</span>
+                <p class="text-xs text-gray-400">Powered by Group 1</p>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-6 max-w-md">
+              Enterprise-grade payroll and HR management platform trusted by
+              10,000+ organizations worldwide.
+            </p>
+            <p class="text-sm text-gray-500">
+              © 2025 PayrollPro - SETEC Institute.<br />School Project for
+              Educational Purposes.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">Product</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#features" class="hover:text-white transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Integrations</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">Company</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Press</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">Legal</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Compliance</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">GDPR</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="calculations.html" class="hover:text-white transition-colors"
+                  >Calculation Methodology</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >API Reference</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <div class="flex gap-6 mb-4 md:mb-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="text-gray-500 text-sm">School Assignment</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- 3D Animations -->
+    <script src="3d-animations.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
