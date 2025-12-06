@@ -228,123 +228,41 @@ function convertNumberToWords(amount) {
 }
 
 let currentZoom = 1;
-const MIN_ZOOM = 0.3;
-const MAX_ZOOM = 1.5;
 
-async function exportToPDF() {
-  const btn = document.getElementById("downloadBtn");
-  const btnText = document.getElementById("btnText");
-  const originalContent = btnText.innerHTML;
-  btn.disabled = true;
-  btnText.innerHTML = '<span class="spinner"></span> Generating...';
 
-  if (!window.jspdf) {
-    alert("jsPDF library not loaded.");
-    btn.disabled = false;
-    btnText.innerHTML = originalContent;
-    return;
-  }
+function switchTab(tab) {
+  const formPanel = document.getElementById("formPanel");
+  const previewPanel = document.getElementById("previewPanel");
+  const tabEdit = document.getElementById("tabEdit");
+  const tabPreview = document.getElementById("tabPreview");
 
-  const { jsPDF } = window.jspdf;
-  const element = document.getElementById("payrollSlip");
+  if (tab === "edit") {
+    formPanel.classList.remove("hidden");
+    previewPanel.classList.add("hidden");
+    previewPanel.classList.remove("flex");
 
-  try {
-    // Clone the element to capture it without UI interference (zoom, margins, etc.)
-    const clone = element.cloneNode(true);
+    // Update Tab Styles
+    tabEdit.classList.add("text-blue-600", "border-t-2", "border-blue-600");
+    tabEdit.classList.remove("text-gray-500");
+    tabPreview.classList.remove(
+      "text-blue-600",
+      "border-t-2",
+      "border-blue-600"
+    );
+    tabPreview.classList.add("text-gray-500");
+  } else {
+    formPanel.classList.add("hidden");
+    previewPanel.classList.remove("hidden");
+    previewPanel.classList.add("flex");
 
-    // Style the clone to be wider for better layout (like a desktop view)
-    // 1000px provides a good "desktop-like" layout that scales down nicely to A4
-    const virtualWidth = 1000;
-    // Calculate min-height to maintain A4 aspect ratio (1.414)
-    const virtualMinHeight = Math.ceil(virtualWidth * (297 / 210));
+    // Update Tab Styles
+    tabPreview.classList.add("text-blue-600", "border-t-2", "border-blue-600");
+    tabPreview.classList.remove("text-gray-500");
+    tabEdit.classList.remove("text-blue-600", "border-t-2", "border-blue-600");
+    tabEdit.classList.add("text-gray-500");
 
-    clone.style.width = `${virtualWidth}px`;
-    clone.style.minHeight = `${virtualMinHeight}px`;
-    clone.style.height = "auto"; // Allow it to grow if content is long
-    clone.style.transform = "none";
-    clone.style.margin = "0";
-    clone.style.padding = "40px"; // Restore comfortable padding for the larger layout
-    clone.style.position = "absolute";
-    clone.style.left = "-9999px";
-    clone.style.top = "0";
-    clone.style.backgroundColor = "white";
-    clone.classList.remove("paper-shadow"); // Remove shadow for clean capture
-
-    // Ensure the content div has appropriate padding
-    const contentDiv = clone.querySelector(".flex-1");
-    if (contentDiv) {
-      // Reset any specific padding overrides to ensure consistent spacing
-      contentDiv.classList.remove("p-6");
-      contentDiv.classList.add("p-10");
-    }
-
-    document.body.appendChild(clone);
-
-    const canvas = await html2canvas(clone, {
-      scale: 2, // High resolution
-      useCORS: true,
-      logging: false,
-      backgroundColor: "#ffffff",
-      width: virtualWidth,
-      windowWidth: virtualWidth,
-      height: clone.scrollHeight,
-      windowHeight: clone.scrollHeight,
-    });
-
-    document.body.removeChild(clone);
-
-    const imgData = canvas.toDataURL("image/png");
-    const doc = new jsPDF({
-      orientation: "portrait",
-      unit: "mm",
-      format: "a4",
-    });
-
-    const pdfWidth = doc.internal.pageSize.getWidth();
-    const pdfHeight = doc.internal.pageSize.getHeight();
-    const imgProps = doc.getImageProperties(imgData);
-    const imgRatio = imgProps.width / imgProps.height;
-
-    // Calculate dimensions to fit the page width first
-    let finalWidth = pdfWidth;
-    let finalHeight = finalWidth / imgRatio;
-
-    // If fitting to width makes it taller than the page, we must scale down to fit height
-    // This ensures 1-page fit.
-    if (finalHeight > pdfHeight) {
-      finalHeight = pdfHeight;
-      finalWidth = finalHeight * imgRatio;
-    }
-
-    // Center horizontally
-    const x = (pdfWidth - finalWidth) / 2;
-
-    // Align top (y=0)
-    const y = 0;
-
-    doc.addImage(imgData, "PNG", x, y, finalWidth, finalHeight);
-    const empName = document.getElementById("empName").value || "Employee";
-    doc.save(`Payslip_${empName}.pdf`);
-  } catch (error) {
-    console.error(error);
-    alert("Error generating PDF.");
-  } finally {
-    btn.disabled = false;
-    btnText.innerHTML = originalContent;
-  }
-}
-
-function zoomIn() {
-  if (currentZoom < MAX_ZOOM) {
-    currentZoom = Math.min(currentZoom + 0.1, MAX_ZOOM);
-    applyZoom();
-  }
-}
-
-function zoomOut() {
-  if (currentZoom > MIN_ZOOM) {
-    currentZoom = Math.max(currentZoom - 0.1, MIN_ZOOM);
-    applyZoom();
+    // Trigger resize/zoom
+    setTimeout(resetZoom, 50);
   }
 }
 
@@ -353,26 +271,33 @@ function resetZoom() {
   const slip = document.getElementById("payrollSlip");
   if (!container || !slip) return;
 
-  const containerWidth = container.clientWidth - 80;
-  const containerHeight = container.clientHeight - 80;
+  // On mobile, we might want less padding
+  const isMobile = window.innerWidth < 1024;
+  const padding = isMobile ? 20 : 80;
+
+  const containerWidth = container.clientWidth - padding;
+  const containerHeight = container.clientHeight - padding;
   const slipWidth = 794;
   const slipHeight = 1123;
 
   const scaleX = containerWidth / slipWidth;
-  const scaleY = containerHeight / slipHeight;
-  currentZoom = Math.min(scaleX, scaleY, 1);
+
+  if (isMobile) {
+    // On mobile, fit to width, ignore height (allow scrolling)
+    currentZoom = Math.min(scaleX, 1);
+  } else {
+    const scaleY = containerHeight / slipHeight;
+    currentZoom = Math.min(scaleX, scaleY, 1);
+  }
+
   applyZoom();
 }
 
 function applyZoom() {
   const wrapper = document.getElementById("previewWrapper");
-  const zoomLabel = document.getElementById("zoomLevel");
 
   if (wrapper) {
     wrapper.style.transform = `scale(${currentZoom})`;
-  }
-  if (zoomLabel) {
-    zoomLabel.textContent = `${Math.round(currentZoom * 100)}%`;
   }
 }
 

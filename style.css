@@ -200,3 +200,114 @@ body {
 .group:hover .group-hover\:scale-110 {
   transform: scale(1.1);
 }
+
+/* Mobile Responsive Optimizations */
+@media (max-width: 768px) {
+  /* Prevent horizontal overflow on mobile */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Ensure 3D canvas containers are responsive */
+  #payslip-3d-viz,
+  #phone-3d-mockup {
+    width: 100% !important;
+    height: 400px !important;
+    min-height: 300px;
+  }
+
+  /* Adjust text sizes for mobile readability */
+  h1 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem !important; /* 24px */
+    line-height: 2rem;
+  }
+
+  h3 {
+    font-size: 1.25rem !important; /* 20px */
+    line-height: 1.75rem;
+  }
+
+  /* Ensure padding is consistent on mobile */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Stack grid layouts on mobile - REMOVED to allow Tailwind control */
+  /* .grid {
+    grid-template-columns: 1fr !important;
+  } */
+
+  /* Reduce spacing on mobile */
+  .py-24 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .py-20 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  /* Make buttons full width on mobile */
+  .btn-mobile-full {
+    width: 100%;
+  }
+
+  /* Adjust navbar for mobile */
+  nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Ensure images are responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Touch-friendly button sizes */
+  button,
+  a.button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #payslip-3d-viz,
+  #phone-3d-mockup {
+    height: 500px !important;
+  }
+}
+
+/* High DPI screens optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure crisp text rendering on retina displays */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 896px) and (orientation: landscape) {
+  #payslip-3d-viz,
+  #phone-3d-mockup {
+    height: 350px !important;
+  }
+}
+
+/* iOS safe area support */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
