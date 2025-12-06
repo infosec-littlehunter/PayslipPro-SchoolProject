@@ -18,63 +18,77 @@
     <link rel="stylesheet" href="hide-scroll.css" />
     <script src="drag-scroll.js"></script>
   </head>
-  <body class="bg-white dark:bg-slate-950 antialiased overflow-x-hidden transition-colors duration-300">
-    <header class="fixed w-full top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300" id="header">
+  <body
+    class="bg-white dark:bg-slate-950 antialiased overflow-x-hidden transition-colors duration-300"
+  >
+    <header
+      class="fixed w-full top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
+      id="header"
+    >
       <nav class="container mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-          <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
-            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+          <div
+            class="flex items-center space-x-3 cursor-pointer"
+            onclick="scrollToTop()"
+          >
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center"
+            >
               <span class="text-white font-bold text-sm">P</span>
             </div>
-            <span class="text-xl font-bold text-slate-900 dark:text-white">PayrollPro</span>
+            <span class="text-xl font-bold text-slate-900 dark:text-white"
+              >PayrollPro</span
+            >
           </div>
 
           <ul class="hidden lg:flex items-center space-x-8">
-            <li><a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Home</a></li>
-            <li><a href="index.html#why-choose" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Why Us</a></li>
-            <li><a href="index.html#features" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Features</a></li>
-            <li><a href="calculations.html" class="text-blue-600 dark:text-blue-400 font-medium border-b-2 border-blue-600 transition-colors">Calculations</a></li>
-            <li><a href="payslip.html" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">Payslip</a></li>
+            <li>
+              <a
+                href="index.html"
+                class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#why-choose"
+                class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >Why Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#features"
+                class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >Features</a
+              >
+            </li>
+            <li>
+              <a
+                href="calculations.html"
+                class="text-blue-600 dark:text-blue-400 font-medium border-b-2 border-blue-600 transition-colors"
+                >Calculations</a
+              >
+            </li>
+            <li>
+              <a
+                href="payslip.html"
+                class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >Payslip</a
+              >
+            </li>
           </ul>
 
           <div class="hidden lg:flex items-center space-x-4">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()" class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Toggle dark mode">
-              <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-              <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div class="lg:hidden flex items-center space-x-2">
-            <button id="dark-mode-toggle-mobile" onclick="toggleDarkMode()" class="p-2 text-slate-600 dark:text-slate-400" aria-label="Toggle dark mode">
-              <svg id="sun-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-              <svg id="moon-icon-mobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-              </svg>
-            </button>
-            <button type="button" class="text-slate-600 dark:text-slate-400" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden pb-6 space-y-4">
-          <a href="index.html" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Home</a>
-          <a href="index.html#why-choose" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Why Us</a>
-          <a href="index.html#features" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Features</a>
-          <a href="calculations.html" class="block text-blue-600 font-medium">Calculations</a>
-          <a href="payslip.html" class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium">Payslip</a>
-        </div>
-      </nav>
-    </header>
-                class="w-6 h-6"
+            <button
+              id="dark-mode-toggle"
+              onclick="toggleDarkMode()"
+              class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              <svg
+                id="sun-icon"
+                class="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -88,7 +102,7 @@
               </svg>
               <svg
                 id="moon-icon"
-                class="w-6 h-6 hidden"
+                class="w-5 h-5 hidden"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,117 +117,162 @@
             </button>
           </div>
 
-          <!-- Mobile Menu Button -->
-          <button
-            id="mobile-menu-toggle"
-            onclick="toggleMobileMenu()"
-            class="lg:hidden p-2 text-gray-600 dark:text-gray-300"
-            aria-label="Toggle mobile menu"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div class="lg:hidden flex items-center space-x-2">
+            <button
+              id="dark-mode-toggle-mobile"
+              onclick="toggleDarkMode()"
+              class="p-2 text-slate-600 dark:text-slate-400"
+              aria-label="Toggle dark mode"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
+              <svg
+                id="sun-icon-mobile"
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                ></path>
+              </svg>
+              <svg
+                id="moon-icon-mobile"
+                class="w-5 h-5 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                ></path>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="text-slate-600 dark:text-slate-400"
+              onclick="toggleMobileMenu()"
+              aria-label="Toggle mobile menu"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden pb-6 space-y-4">
+          <a
+            href="index.html"
+            class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium"
+            >Home</a
+          >
+          <a
+            href="index.html#why-choose"
+            class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium"
+            >Why Us</a
+          >
+          <a
+            href="index.html#features"
+            class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium"
+            >Features</a
+          >
+          <a href="calculations.html" class="block text-blue-600 font-medium"
+            >Calculations</a
+          >
+          <a
+            href="payslip.html"
+            class="block text-slate-600 dark:text-slate-400 hover:text-blue-600 font-medium"
+            >Payslip</a
+          >
         </div>
       </nav>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
-      >
-        <ul class="flex flex-col space-y-1 px-6 py-4">
-          <li>
-            <a
-              href="index.html#why-choose"
-              class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600"
-              >Why Us</a
-            >
-          </li>
-          <li>
-            <a
-              href="index.html#features"
-              class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600"
-              >Features</a
-            >
-          </li>
-          <li>
-            <a
-              href="calculations.html"
-              class="block py-2 text-blue-600 font-medium"
-              >How It Works</a
-            >
-          </li>
-          <li>
-            <a
-              href="index.html#team"
-              class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600"
-              >Our Team</a
-            >
-          </li>
-          <li>
-            <a
-              href="payslip.html"
-              class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600"
-              >Payslip</a
-            >
-          </li>
-          <li class="pt-2 border-t border-gray-200 dark:border-gray-700">
-            <button
-              id="mobile-dark-toggle"
-              onclick="toggleDarkMode()"
-              class="w-full text-left py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600"
-            >
-              🌙 Dark Mode
-            </button>
-          </li>
-        </ul>
-      </div>
     </header>
 
     <main class="pt-20">
       <!-- Hero Section -->
-      <section class="pt-32 pb-16 px-6 lg:px-12 bg-gradient-to-b from-blue-50 dark:from-slate-900 to-white dark:to-slate-950">
+      <section
+        class="pt-32 pb-16 px-6 lg:px-12 bg-gradient-to-b from-blue-50 dark:from-slate-900 to-white dark:to-slate-950"
+      >
         <div class="container mx-auto max-w-5xl">
           <div class="text-center mb-16">
-            <div class="inline-block mb-6 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-              <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">Understanding Your Payroll</span>
+            <div
+              class="inline-block mb-6 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full"
+            >
+              <span
+                class="text-sm font-semibold text-blue-600 dark:text-blue-400"
+                >Understanding Your Payroll</span
+              >
             </div>
-            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+            <h1
+              class="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
+            >
               Payroll Calculation Framework
             </h1>
-            <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Learn how PayrollPro calculates salaries, deductions, and benefits with full Cambodia compliance and transparency
+            <p
+              class="text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+            >
+              Learn how PayrollPro calculates salaries, deductions, and benefits
+              with full Cambodia compliance and transparency
             </p>
           </div>
 
           <!-- Quick Stats -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">100%</div>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Accurate</p>
+            <div
+              class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+            >
+              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                100%
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                Accurate
+              </p>
             </div>
-            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Real-Time</p>
+            <div
+              class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+            >
+              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                24/7
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                Real-Time
+              </p>
             </div>
-            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">15+</div>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Tax Scenarios</p>
+            <div
+              class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+            >
+              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                15+
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                Tax Scenarios
+              </p>
             </div>
-            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">0%</div>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Manual Errors</p>
+            <div
+              class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+            >
+              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                0%
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                Manual Errors
+              </p>
             </div>
           </div>
         </div>
@@ -224,7 +283,9 @@
         <div class="container mx-auto px-6 lg:px-12">
           <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-              <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2
+                class="text-4xl font-bold text-slate-900 dark:text-white mb-4"
+              >
                 Calculation Framework
               </h2>
               <p class="text-lg text-slate-600 dark:text-slate-300">
@@ -235,133 +296,324 @@
             <!-- Three Main Components -->
             <div class="grid lg:grid-cols-3 gap-8 mb-20">
               <!-- Base Salary -->
-              <div class="bg-blue-50 dark:bg-blue-900/10 rounded-xl p-8 border border-blue-200 dark:border-blue-800">
+              <div
+                class="bg-blue-50 dark:bg-blue-900/10 rounded-xl p-8 border border-blue-200 dark:border-blue-800"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <div
+                    class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Base Salary</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Starting point for all calculations</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Base Salary
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Starting point for all calculations
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  Your base salary is the fundamental component. It's determined by your employment contract and forms the foundation for all payroll calculations, including overtime and additional compensation.
+                  Your base salary is the fundamental component. It's determined
+                  by your employment contract and forms the foundation for all
+                  payroll calculations, including overtime and additional
+                  compensation.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Monthly salary as per employment contract</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Monthly salary as per employment contract</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Hourly rates automatically converted to monthly equivalent</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Hourly rates automatically converted to monthly
+                      equivalent</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Overtime rates (1.5x-2x) calculated separately from base</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Overtime rates (1.5x-2x) calculated separately from
+                      base</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Prorated for part-time employees and mid-month joiners</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Prorated for part-time employees and mid-month
+                      joiners</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Allowances -->
-              <div class="bg-emerald-50 dark:bg-emerald-900/10 rounded-xl p-8 border border-emerald-200 dark:border-emerald-800">
+              <div
+                class="bg-emerald-50 dark:bg-emerald-900/10 rounded-xl p-8 border border-emerald-200 dark:border-emerald-800"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <div
+                    class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Allowances</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Additional compensations and benefits</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Allowances
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Additional compensations and benefits
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  Allowances are supplementary payments provided by employers. They are added to your base salary to form your gross salary and typically receive the same tax treatment as salary income.
+                  Allowances are supplementary payments provided by employers.
+                  They are added to your base salary to form your gross salary
+                  and typically receive the same tax treatment as salary income.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Housing allowance for accommodation support</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Housing allowance for accommodation support</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Transportation allowance for commute costs</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Transportation allowance for commute costs</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Meal allowance covering daily meal expenses</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Meal allowance covering daily meal expenses</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Performance bonuses based on KPI achievement</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Performance bonuses based on KPI achievement</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Deductions -->
-              <div class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-8 border border-amber-200 dark:border-amber-800">
+              <div
+                class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-8 border border-amber-200 dark:border-amber-800"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <div
+                    class="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Deductions</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Mandatory and voluntary reductions</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Deductions
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Mandatory and voluntary reductions
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  Deductions are amounts subtracted from gross salary. These include mandatory contributions (taxes and social security) and voluntary deductions (insurance, loans, contributions) as per Cambodia regulations.
+                  Deductions are amounts subtracted from gross salary. These
+                  include mandatory contributions (taxes and social security)
+                  and voluntary deductions (insurance, loans, contributions) as
+                  per Cambodia regulations.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Income tax (IRC) on taxable income above threshold</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Income tax (IRC) on taxable income above threshold</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Social security contribution (0.8% employee share)</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Social security contribution (0.8% employee share)</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Health insurance premiums for employee coverage</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Health insurance premiums for employee coverage</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300">Loans and advances repayment per agreement</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      >Loans and advances repayment per agreement</span
+                    >
                   </li>
                 </ul>
               </div>
@@ -370,49 +622,113 @@
             <!-- Formula Section -->
             <div class="mb-20">
               <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Net Salary Calculation Formula</h3>
-                <p class="text-slate-600 dark:text-slate-400 mt-3 text-lg">The step-by-step process to determine your final take-home pay</p>
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">
+                  Net Salary Calculation Formula
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+                  The step-by-step process to determine your final take-home pay
+                </p>
               </div>
-              
+
               <div class="relative">
                 <!-- Connecting Line (Desktop) -->
-                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-blue-100 dark:bg-blue-900/30 -translate-y-1/2 z-0 rounded-full"></div>
+                <div
+                  class="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-blue-100 dark:bg-blue-900/30 -translate-y-1/2 z-0 rounded-full"
+                ></div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10"
+                >
                   <!-- Step 1 -->
-                  <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300">1</div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Gross Salary</h4>
-                    <div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700">
+                  <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group"
+                  >
+                    <div
+                      class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                    >
+                      1
+                    </div>
+                    <h4
+                      class="text-lg font-bold text-slate-900 dark:text-white mb-3"
+                    >
+                      Gross Salary
+                    </h4>
+                    <div
+                      class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700"
+                    >
                       Base Salary + Allowances
                     </div>
                   </div>
 
                   <!-- Step 2 -->
-                  <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300">2</div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Taxable Income</h4>
-                    <div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700">
+                  <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group"
+                  >
+                    <div
+                      class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                    >
+                      2
+                    </div>
+                    <h4
+                      class="text-lg font-bold text-slate-900 dark:text-white mb-3"
+                    >
+                      Taxable Income
+                    </h4>
+                    <div
+                      class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700"
+                    >
                       Gross - Exemptions
                     </div>
                   </div>
 
                   <!-- Step 3 -->
-                  <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300">3</div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Deductions</h4>
-                    <div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700">
+                  <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 group"
+                  >
+                    <div
+                      class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                    >
+                      3
+                    </div>
+                    <h4
+                      class="text-lg font-bold text-slate-900 dark:text-white mb-3"
+                    >
+                      Deductions
+                    </h4>
+                    <div
+                      class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 text-sm font-mono text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700"
+                    >
                       Tax + NSSF + Others
                     </div>
                   </div>
 
                   <!-- Result -->
-                  <div class="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-2xl p-6 shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 transform lg:scale-105 ring-4 ring-white dark:ring-slate-950">
-                    <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center font-bold mb-4">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <div
+                    class="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-2xl p-6 shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 transform lg:scale-105 ring-4 ring-white dark:ring-slate-950"
+                  >
+                    <div
+                      class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center font-bold mb-4"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        ></path>
+                      </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-white mb-3">Net Salary</h4>
-                    <div class="bg-white/10 rounded-lg p-3 text-sm font-mono text-blue-50 border border-white/20">
+                    <h4 class="text-lg font-bold text-white mb-3">
+                      Net Salary
+                    </h4>
+                    <div
+                      class="bg-white/10 rounded-lg p-3 text-sm font-mono text-blue-50 border border-white/20"
+                    >
                       Gross - Total Deductions
                     </div>
                   </div>
@@ -428,188 +744,453 @@
         <div class="container mx-auto px-6 lg:px-12">
           <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-              <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2
+                class="text-4xl font-bold text-slate-900 dark:text-white mb-4"
+              >
                 Cambodia Government Compliance
               </h2>
               <p class="text-lg text-slate-600 dark:text-slate-300">
-                Full compliance with all Cambodia regulations, tax requirements, and banking standards
+                Full compliance with all Cambodia regulations, tax requirements,
+                and banking standards
               </p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8">
               <!-- Income Tax (IRC) -->
-              <div class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+              <div
+                class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  <div
+                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-blue-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Income Tax (IRC)</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Progressive taxation managed by payroll system</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Income Tax (IRC)
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Progressive taxation managed by payroll system
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  PayrollPro automatically calculates income tax according to Cambodia General Department of Taxation (DGT) regulations. The system manages progressive tax brackets and ensures accurate withholding at source, with monthly reporting to government authorities.
+                  PayrollPro automatically calculates income tax according to
+                  Cambodia General Department of Taxation (DGT) regulations. The
+                  system manages progressive tax brackets and ensures accurate
+                  withholding at source, with monthly reporting to government
+                  authorities.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Personal Exemption:</strong> 1,000,000 KHR per month threshold</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Personal Exemption:</strong> 1,000,000 KHR per
+                      month threshold</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Tax Brackets:</strong> Progressive rates from 0% to 20% per income level</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Tax Brackets:</strong> Progressive rates from 0%
+                      to 20% per income level</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Monthly Reporting:</strong> Automatic IRC forms submitted to DGT</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Monthly Reporting:</strong> Automatic IRC forms
+                      submitted to DGT</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Withholding Accuracy:</strong> Employer withholds and remits on behalf of employee</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Withholding Accuracy:</strong> Employer withholds
+                      and remits on behalf of employee</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Social Security (NSSF) -->
-              <div class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+              <div
+                class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                  <div
+                    class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-emerald-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path d="M13 7H7v6h6V7z"></path>
-                      <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2V2a1 1 0 112 0v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1h-2v1a1 1 0 11-2 0v-1H7a2 2 0 01-2-2v-1H4a1 1 0 110-2h1v-2H4a1 1 0 110-2h1V9H4a1 1 0 110-2h1V7a2 2 0 012-2h1V2z" clip-rule="evenodd"></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2V2a1 1 0 112 0v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1h-2v1a1 1 0 11-2 0v-1H7a2 2 0 01-2-2v-1H4a1 1 0 110-2h1v-2H4a1 1 0 110-2h1V9H4a1 1 0 110-2h1V7a2 2 0 012-2h1V2z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Social Security (NSSF)</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Employee and employer contributions for benefits</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Social Security (NSSF)
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Employee and employer contributions for benefits
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  National Social Security Fund contributions are mandatory for all employees in Cambodia. PayrollPro accurately calculates and tracks both employee and employer contributions, manages enrollment, and ensures monthly remittance with proper documentation to NSSF authorities.
+                  National Social Security Fund contributions are mandatory for
+                  all employees in Cambodia. PayrollPro accurately calculates
+                  and tracks both employee and employer contributions, manages
+                  enrollment, and ensures monthly remittance with proper
+                  documentation to NSSF authorities.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Employee Rate:</strong> 0.8% of gross salary deducted</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Employee Rate:</strong> 0.8% of gross salary
+                      deducted</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Employer Rate:</strong> 0.8% of gross salary contributed</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Employer Rate:</strong> 0.8% of gross salary
+                      contributed</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Coverage:</strong> Old age, disability, and survivor benefits included</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Coverage:</strong> Old age, disability, and
+                      survivor benefits included</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Monthly Remittance:</strong> Automatic payments and compliance reporting</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Monthly Remittance:</strong> Automatic payments
+                      and compliance reporting</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Labor Law Standards -->
-              <div class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+              <div
+                class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1V3a1 1 0 011-1h5a1 1 0 011 1v1h1V3a1 1 0 011 1v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H6a2 2 0 01-2-2v-1H3a1 1 0 110-2h1v-2H3a1 1 0 110-2h1V9H3a1 1 0 110-2h1V6a2 2 0 012-2h1V3a1 1 0 011-1z" clip-rule="evenodd"></path>
+                  <div
+                    class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-purple-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5 2a1 1 0 011 1v1h1V3a1 1 0 011-1h5a1 1 0 011 1v1h1V3a1 1 0 011 1v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H6a2 2 0 01-2-2v-1H3a1 1 0 110-2h1v-2H3a1 1 0 110-2h1V9H3a1 1 0 110-2h1V6a2 2 0 012-2h1V3a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Labor Law Standards</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Compliance with Cambodia Labor Law requirements</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Labor Law Standards
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Compliance with Cambodia Labor Law requirements
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  PayrollPro ensures full compliance with Cambodia's Labor Law, including minimum wage requirements, working hour regulations, leave policies, and severance calculations. The system tracks all employment metrics required by law and generates necessary compliance reports.
+                  PayrollPro ensures full compliance with Cambodia's Labor Law,
+                  including minimum wage requirements, working hour regulations,
+                  leave policies, and severance calculations. The system tracks
+                  all employment metrics required by law and generates necessary
+                  compliance reports.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Minimum Wage:</strong> Statutory rates enforced per province and year</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Minimum Wage:</strong> Statutory rates enforced
+                      per province and year</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Working Hours:</strong> 48 hours per week with overtime tracking</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Working Hours:</strong> 48 hours per week with
+                      overtime tracking</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Leave Entitlements:</strong> Annual, sick, and maternity leave managed automatically</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Leave Entitlements:</strong> Annual, sick, and
+                      maternity leave managed automatically</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Severance Calculation:</strong> Accurate computation per Labor Law requirements</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Severance Calculation:</strong> Accurate
+                      computation per Labor Law requirements</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Banking Standards -->
-              <div class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+              <div
+                class="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
+              >
                 <div class="flex items-start gap-4 mb-4">
-                  <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm12 4a2 2 0 012 2v4a2 2 0 01-2 2H4v-6a2 2 0 002-2h10z"></path>
+                  <div
+                    class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      class="w-6 h-6 text-orange-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm12 4a2 2 0 012 2v4a2 2 0 01-2 2H4v-6a2 2 0 002-2h10z"
+                      ></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Banking Standards</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Direct deposit and payment processing standards</p>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-white"
+                    >
+                      Banking Standards
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      Direct deposit and payment processing standards
+                    </p>
                   </div>
                 </div>
                 <p class="text-slate-700 dark:text-slate-300 mb-4">
-                  PayrollPro integrates seamlessly with Cambodia's major banks including ABA Bank. The system generates bank-compatible payment files, maintains detailed audit trails, performs automatic reconciliation, and ensures secure and compliant salary disbursement to employee accounts.
+                  PayrollPro integrates seamlessly with Cambodia's major banks
+                  including ABA Bank. The system generates bank-compatible
+                  payment files, maintains detailed audit trails, performs
+                  automatic reconciliation, and ensures secure and compliant
+                  salary disbursement to employee accounts.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Direct Deposit:</strong> ABA Bank and other major banks integrated</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Direct Deposit:</strong> ABA Bank and other major
+                      banks integrated</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>File Formats:</strong> Compatible with ABA ACH and other banking standards</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>File Formats:</strong> Compatible with ABA ACH
+                      and other banking standards</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Audit Trail:</strong> Complete transaction history for compliance verification</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Audit Trail:</strong> Complete transaction
+                      history for compliance verification</span
+                    >
                   </li>
                   <li class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    <svg
+                      class="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span class="text-slate-700 dark:text-slate-300"><strong>Reconciliation:</strong> Automatic bank and payroll reconciliation tools</span>
+                    <span class="text-slate-700 dark:text-slate-300"
+                      ><strong>Reconciliation:</strong> Automatic bank and
+                      payroll reconciliation tools</span
+                    >
                   </li>
                 </ul>
               </div>
