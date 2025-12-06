@@ -57,7 +57,9 @@ window.addEventListener("scroll", function () {
 // Mobile menu toggle
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById("mobile-menu");
-  mobileMenu.classList.toggle("hidden");
+  if (mobileMenu) {
+    mobileMenu.classList.toggle("hidden");
+  }
 }
 
 // Smooth scrolling
