@@ -26,6 +26,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Keyframe Animations */
 @keyframes fadeInUp {
   from {
@@ -276,6 +282,16 @@ body {
   a.button {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Ensure slip fits mobile width */
+  .a4-paper {
+    width: 100% !important;
+    min-height: 0;
+  }
+
+  #previewContainer {
+    padding: 0.5rem !important;
   }
 }
 
